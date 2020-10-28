@@ -9,7 +9,7 @@ const mysqlHost = process.env.SQL_HOST;
 const mysqlUser = process.env.SQL_USER;
 const mysqlPassword = process.env.SQL_PASSWORD;
 const mysqlDatabase = process.env.SQL_DB_NAME;
-
+console.log(mysqlDatabase)
 // create a MySQL resource pool
 const MAX_CONNECTIONS = 100;
 const pool = mysql.createPool({
