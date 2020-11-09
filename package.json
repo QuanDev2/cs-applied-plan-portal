@@ -30,8 +30,8 @@
     "wait-on": "^4.0.2"
   },
   "scripts": {
-    "start": "npm run dev",
-    "dev": "ENV=DEVELOPMENT REACT_APP_ENV=DEVELOPMENT concurrently \"npm run serverDev\" \"npm run client\"",
+    "start": "concurrently \"node server.js --ignore client/*\" \"npm run client\"",
+    "dev": "ENV=DEVELOPMENT REACT_APP_ENV=sDEVELOPMENT concurrently \"npm run serverDev\" \"npm run client\"",
     "testAPI": "ENV=TESTING jest --watchAll=false --detectOpenHandles --forceExit --maxWorkers=10",
     "testReact": "cd client && npm test a",
     "serverDev": "nodemon server.js --ignore client/*",
