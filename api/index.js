@@ -43,13 +43,17 @@ app.use("/api/user", require("./user"));
 if (process.env.ENV === Env.production) {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    // res.sendFile(path.join(__dirname, "../client/build/index.html")); 
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  // });
   });
 } else {
   // if on other environments, everything else gets a 404 error
   app.get("/api/*", (req, res) => {
     console.error("404: File not found\n");
-    res.status(404).send({error: "Not Found"});
+    res.status(404).send({error: "Not Found Because not Production"});
   });
 }
 

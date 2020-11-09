@@ -1,6 +1,6 @@
 // File: server.js
 // Description: handles server functions and setup
-
+const path = require('path');
 console.log("Server JavaScript start");
 
 const {Env} = require("./entities/environment");
@@ -13,11 +13,6 @@ if (process.env.ENV !== Env.production) {
 const pool = require("./services/db/mysqlPool").pool;
 const app = require("./api/index");
 
-app.use(express.static('client/build'));
-const path = require('path');
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-});
 // confirm that connection was made to the database
 async function testConnection(pool, attempt, callback) {
   try {
